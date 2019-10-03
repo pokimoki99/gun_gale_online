@@ -8,14 +8,42 @@ public class Player : Photon.MonoBehaviour
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
-   // private Vector3 syncStartPosition=Vector3.zero
+    private Vector3 syncStartPosition = Vector3.zero;
+    private Vector3 syncEndPosition = Vector3.zero;
 
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(GetComponent<Rigidbody>().position);
+            stream.SendNext(GetComponent<Rigidbody>().velocity);
+        }
+        else
+        {
+            Vector3 syncPosition = (Vector3)stream.ReceiveNext();
+            Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
+            syncTime = 0f;
+            syncDelay = Time.time - lastSynchronizationTime;
+            lastSynchronizationTime = Time.time;
+            syncEndPosition = syncPosition + syncVelocity * syncDelay;
+            syncStartPosition = GetComponent<Rigidbody>().position;
+        }
+    }
+
+    void Awake()
+    {
+        lastSynchronizationTime = Time.time;
+    }
     void Update()
     {
         if (photonView.isMine)
         {
             InputMovement();
             InputColorChange();
+        }
+        else
+        {
+            SynchedMovement();
         }
     }
 
@@ -39,6 +67,14 @@ public class Player : Photon.MonoBehaviour
 
     }
 
+    private void SynchedMovement()
+    {
+        syncTime += Time.deltaTime;
+        GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition,
+            syncEndPosition, syncTime / syncDelay);
+    }
+
+
     private void InputColorChange()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -49,6 +85,7 @@ public class Player : Photon.MonoBehaviour
     [PunRPC] void ChangeColorTo (Vector3 color)
     {
         GetComponent<Renderer>().material.color = new Color(color.x, color.y, color.z, 1f);
+
         if (photonView.isMine)
             photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
     }
