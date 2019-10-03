@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139b0d65b861981448b7c88691ae2d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1418689059}
+  player: {fileID: 0}
 --- !u!4 &257693921
 Transform:
   m_ObjectHideFlags: 0
@@ -430,12 +430,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1418689059 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2016308132799516614, guid: 9896cbccb6d0419488d4cf5ab8722117,
-    type: 3}
-  m_PrefabInstance: {fileID: 9137842663699081528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9137842663699081528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,12 +450,12 @@ PrefabInstance:
     - target: {fileID: 4834972953036226691, guid: 9896cbccb6d0419488d4cf5ab8722117,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96
+      value: -3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4834972953036226691, guid: 9896cbccb6d0419488d4cf5ab8722117,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.3
+      value: 4.29
       objectReference: {fileID: 0}
     - target: {fileID: 4834972953036226691, guid: 9896cbccb6d0419488d4cf5ab8722117,
         type: 3}
