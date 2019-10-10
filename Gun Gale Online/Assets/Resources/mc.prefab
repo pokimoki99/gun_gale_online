@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5690762178589419604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673562487129105226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b07e819fd53364994bfedf5d261c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletprefab: {fileID: 6960390530339962672, guid: 757c3c2698cb4fe478baf4b3bfc302e6,
+    type: 3}
+  Gun_pos: {fileID: 4673562487129105230}
 --- !u!1 &4729880106167849593
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,9 +495,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
+--- !u!1 &4673562487129105226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a1a93da62b3524a4ab8322a0acfbd685,
+    type: 3}
+  m_PrefabInstance: {fileID: 4673562487129007594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4673562487129145194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a1a93da62b3524a4ab8322a0acfbd685,
+    type: 3}
+  m_PrefabInstance: {fileID: 4673562487129007594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4673562487129105230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: a1a93da62b3524a4ab8322a0acfbd685,
     type: 3}
   m_PrefabInstance: {fileID: 4673562487129007594}
   m_PrefabAsset: {fileID: 0}
