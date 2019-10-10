@@ -10,9 +10,10 @@ public class NetworkManager : MonoBehaviour
     private RoomInfo[] roomsList;
     public GameObject player;
 
-    //public GameObject First_team;
-   //public GameObject Second_team;
+    public GameObject First_team;
+    public GameObject Second_team;
     public bool team=false; // false is team 1, true is team 2
+    Vector3 pos;
 
     // Start is called before the first frame update
     void Start()
@@ -80,8 +81,21 @@ public class NetworkManager : MonoBehaviour
     }
     void OnJoinedRoom()
     {
+        
         Debug.Log("Connected to Room");
+        if (team==false)
+        {
+            pos = new Vector3(First_team.transform.position.x, First_team.transform.position.y + 0.4f, First_team.transform.position.z);
+            PhotonNetwork.Instantiate(player.name,
+             pos, Quaternion.identity, 0);
+        }
+        if (team==true)
+        {
+            pos = new Vector3(Second_team.transform.position.x, Second_team.transform.position.y + 0.4f, Second_team.transform.position.z);
 
-        PhotonNetwork.Instantiate(player.name, Vector3.up * 5, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(player.name,
+          pos, Quaternion.identity, 0);
+        }
+      
     }
 }
