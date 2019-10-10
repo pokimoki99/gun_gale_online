@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 34b21ed4-7f80-4082-9a26-a6e687eb8259
+  AppID: 9f66260d-6060-4a85-8a61-f3a340507cd1
   VoiceAppID: 
   ChatAppID: 
   HostType: 1
@@ -28,6 +28,7 @@ MonoBehaviour:
   NetworkLogging: 1
   RunInBackground: 1
   RpcList:
+  - ChangeColorTo
   - Chat
   - ColorRpc
   - DestroyRpc
@@ -43,5 +44,4 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
-  - ChangeColorTo
   DisableAutoOpenWizard: 1
