@@ -80,4 +80,11 @@ public class GameManager : MonoBehaviour
         if (ammocount > 100) ammocount = 100;
         UpdateScore();
     }
+    public void Update()
+    {
+        if (score==10)
+        {
+            //gamewin
+        }
+    }
 }

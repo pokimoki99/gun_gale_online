@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour
     {
         if (col.gameObject.tag == "EnemyNPC")
         {
-            gm.incscore(10);
+            gm.incscore(1);
             Destroy(col.gameObject);// the cube
             explosion = Instantiate(explosionprefab, this.transform.position, this.transform.rotation) as GameObject;
             Destroy(explosion, 5.0f); // the explosion
