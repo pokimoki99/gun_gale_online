@@ -11,6 +11,7 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
         if (stream.isWriting)
@@ -33,13 +34,14 @@ public class Player : Photon.MonoBehaviour
     void Awake()
     {
         lastSynchronizationTime = Time.time;
+
     }
     void Update()
     {
+       
         if (photonView.isMine)
         {
             InputMovement();
-            InputColorChange();
         }
         else
         {
@@ -65,6 +67,7 @@ public class Player : Photon.MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position
                 - Vector3.right * speed * Time.deltaTime);
 
+
     }
 
     private void SynchedMovement()
@@ -75,18 +78,4 @@ public class Player : Photon.MonoBehaviour
     }
 
 
-    private void InputColorChange()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-            ChangeColorTo(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f),
-                Random.Range(0f, 1f)));
-    }
-
-    [PunRPC] void ChangeColorTo (Vector3 color)
-    {
-        GetComponent<Renderer>().material.color = new Color(color.x, color.y, color.z, 1f);
-
-        if (photonView.isMine)
-            photonView.RPC("ChangeColorTo", PhotonTargets.OthersBuffered, color);
-    }
 }

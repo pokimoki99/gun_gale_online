@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -81,21 +82,29 @@ public class NetworkManager : MonoBehaviour
     }
     void OnJoinedRoom()
     {
-        
+        spawnplayer();
         Debug.Log("Connected to Room");
-        if (team==false)
-        {
-            pos = new Vector3(First_team.transform.position.x, First_team.transform.position.y + 0.4f, First_team.transform.position.z);
-            PhotonNetwork.Instantiate(player.name,
-             pos, Quaternion.identity, 0);
-        }
-        if (team==true)
-        {
-            pos = new Vector3(Second_team.transform.position.x, Second_team.transform.position.y + 0.4f, Second_team.transform.position.z);
+        //if (team==false)
+        //{
+           
+        //}
+        //if (team==true)
+        //{
+        //    pos = new Vector3(Second_team.transform.position.x, Second_team.transform.position.y + 0.4f, Second_team.transform.position.z);
 
-            PhotonNetwork.Instantiate(player.name,
-          pos, Quaternion.identity, 0);
+        //    GameObject Myplayer= (GameObject)PhotonNetwork.Instantiate(player.name,
+        //  pos, Quaternion.identity, 0);
+        //    Myplayer.GetComponent<FirstPersonController>();
         }
-      
+    void spawnplayer()
+    {
+        pos = new Vector3(First_team.transform.position.x, First_team.transform.position.y + 0.4f, First_team.transform.position.z);
+        GameObject Myplayer = (GameObject)PhotonNetwork.Instantiate("mc",
+      pos, Quaternion.identity, 0);
+        ((MonoBehaviour)Myplayer.GetComponent("Player")).enabled = true;
     }
+
 }
+
+    
+
