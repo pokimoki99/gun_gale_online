@@ -10,16 +10,20 @@ public class NetworkManager : MonoBehaviour
     private TypedLobby lobbyName = new TypedLobby("New_Lobby", LobbyType.Default);
     private RoomInfo[] roomsList;
     public GameObject player;
-
-    public GameObject First_team;
-    public GameObject Second_team;
     public bool team=false; // false is team 1, true is team 2
     Vector3 pos;
+    int rng;
+    //SpawnSpot1[] spawnSpots1;
+    //SpawnSpot2[] spawnSpots2;
+    public GameObject[] spawnSpots1;
+    public GameObject[] spawnSpots2;
 
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
+        spawnSpots1 = GameObject.FindGameObjectsWithTag("spawnpoints");
+        spawnSpots2 = GameObject.FindGameObjectsWithTag("spawnpoints2");
     }
 
     // Update is called once per frame
@@ -84,27 +88,28 @@ public class NetworkManager : MonoBehaviour
     {
         spawnplayer();
         Debug.Log("Connected to Room");
-        //if (team==false)
-        //{
-           
-        //}
-        //if (team==true)
-        //{
-        //    pos = new Vector3(Second_team.transform.position.x, Second_team.transform.position.y + 0.4f, Second_team.transform.position.z);
 
-        //    GameObject Myplayer= (GameObject)PhotonNetwork.Instantiate(player.name,
-        //  pos, Quaternion.identity, 0);
-        //    Myplayer.GetComponent<FirstPersonController>();
         }
     void spawnplayer()
     {
-        pos = new Vector3(First_team.transform.position.x, First_team.transform.position.y + 0.4f, First_team.transform.position.z);
-        GameObject Myplayer = (GameObject)PhotonNetwork.Instantiate("mc",
-      pos, Quaternion.identity, 0);
-        ((MonoBehaviour)Myplayer.GetComponent("Player")).enabled = true;
+        //if (team == false)
+        //{
+        //SpawnSpot1 mySpawnSpot1 = spawnSpots1[Random.Range(0, spawnSpots1.Length)];
+            GameObject MyspawnSpots1 = spawnSpots1[Random.Range(0, spawnSpots1.Length)];
+            pos = new Vector3(MyspawnSpots1.transform.position.x, MyspawnSpots1.transform.position.y + 0.4f, MyspawnSpots1.transform.position.z);
+            GameObject Myplayer1 = (GameObject)PhotonNetwork.Instantiate("mc", pos, Quaternion.identity, 0);
+            //((MonoBehaviour)Myplayer1.GetComponent("Player")).enabled = true;
+        //}
+
+
+        //if (team == true)
+        //{
+            GameObject mySpawnSpot2 = spawnSpots2[Random.Range(0, spawnSpots2.Length)];
+            pos = new Vector3(mySpawnSpot2.transform.position.x, mySpawnSpot2.transform.position.y + 0.4f, mySpawnSpot2.transform.position.z);
+            GameObject Myplayer2 = (GameObject)PhotonNetwork.Instantiate("mc", pos, Quaternion.identity, 1);
+            //((MonoBehaviour)Myplayer2.GetComponent("Player")).enabled = true;
+           
+        //}
+
     }
-
 }
-
-    
-
