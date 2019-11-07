@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   camera: {fileID: 4729880106167849593}
+  bullet: {fileID: 6960390530339463952, guid: 757c3c2698cb4fe478baf4b3bfc302e6, type: 3}
 --- !u!1 &7689247655216452351
 GameObject:
   m_ObjectHideFlags: 0

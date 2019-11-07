@@ -11,6 +11,8 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
     public GameObject camera;
+    public GameObject bullet;
+    BulletFireScript bullfire;
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
@@ -42,11 +44,15 @@ public class Player : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             InputMovement();
+            bullet.SetActive(true);
         }
         else
         {
             SynchedMovement();
             camera.SetActive(false);
+            //bullet.SetActive(false);
+            gameObject.GetComponent<BulletFireScript>().enabled = false;
+
 
         }
     }
