@@ -10,7 +10,7 @@ public class Player : Photon.MonoBehaviour
     private float syncTime = 0f;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
-
+    public GameObject camera;
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
@@ -46,6 +46,8 @@ public class Player : Photon.MonoBehaviour
         else
         {
             SynchedMovement();
+            camera.SetActive(false);
+
         }
     }
 
