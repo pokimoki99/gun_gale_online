@@ -10,26 +10,33 @@ public class Player : Photon.MonoBehaviour
     private float syncTime = 0f;
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
+    private Vector3 syncStartRotation = Vector3.zero;
+    private Vector3 syncEndRotation = Vector3.zero;
     public GameObject camera;
     public GameObject bullet;
     BulletFireScript bullfire;
+    public bool syncLocalRotation = true;
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
+            stream.SendNext(GetComponent<Rigidbody>().rotation);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
         }
         else
         {
             Vector3 syncPosition = (Vector3)stream.ReceiveNext();
+            //Vector3 syncRotation = (Vector3)stream.ReceiveNext();
             Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
             syncTime = 0f;
             syncDelay = Time.time - lastSynchronizationTime;
             lastSynchronizationTime = Time.time;
             syncEndPosition = syncPosition + syncVelocity * syncDelay;
             syncStartPosition = GetComponent<Rigidbody>().position;
+            //syncEndRotation = syncRotation + syncVelocity * syncDelay;
+            //syncStartRotation = GetComponent<Rigidbody>().rotation;
         }
     }
 
@@ -40,6 +47,7 @@ public class Player : Photon.MonoBehaviour
     }
     void Update()
     {
+         //if (syncLocalRotation) myTransform.localRotation = Quaternion.Slerp(lhs.rot, rhs.rot, t);
        
         if (photonView.isMine)
         {
