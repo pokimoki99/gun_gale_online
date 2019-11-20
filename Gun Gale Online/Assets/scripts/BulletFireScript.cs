@@ -7,7 +7,9 @@ public class BulletFireScript : MonoBehaviour
     public Transform bulletprefab;
     public GameObject Gun_pos;
     Vector3 gun;
+    public bool shotgun= false;
     // Use this for initialization
+    BulletScript spread;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -19,8 +21,53 @@ public class BulletFireScript : MonoBehaviour
         if (Input.GetButtonDown("Fire1")&&(GameManager.Instance.ammocount>0))
         {
             //gun = new Vector3(Gun_pos.transform.position.x+0.5f, Gun_pos.transform.position.y + 0.4f,Gun_pos.transform.position.z+0.5f);
-            Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
-            GameManager.Instance.fire();
+
+            if (shotgun == true)
+            {
+                Debug.Log(shotgun);
+                //for (int i = 0; i <= 8; i++)
+                //{
+                //    Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                //    GameManager.Instance.fire();
+                //    Debug.Log("fire");
+                //}
+                gun = new Vector3(Gun_pos.transform.position.x + 0.5f, Gun_pos.transform.position.y + 0.4f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.45f, Gun_pos.transform.position.y + 0.4f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.55f, Gun_pos.transform.position.y + 0.4f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.5f, Gun_pos.transform.position.y + 0.45f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.5f, Gun_pos.transform.position.y + 0.35f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.55f, Gun_pos.transform.position.y + 0.45f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.45f, Gun_pos.transform.position.y + 0.45f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.55f, Gun_pos.transform.position.y + 0.35f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                gun = new Vector3(Gun_pos.transform.position.x + 0.45f, Gun_pos.transform.position.y + 0.35f, Gun_pos.transform.position.z + 0.5f);
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+                spread.shotgun_spread = true;
+                int z = 0;
+
+
+            }
+            else
+            {
+                Instantiate(bulletprefab, Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+            }
         }
     }
 }

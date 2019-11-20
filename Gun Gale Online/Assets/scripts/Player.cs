@@ -14,15 +14,14 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncEndRotation = Vector3.zero;
     public GameObject camera;
     public GameObject bullet;
-    BulletFireScript bullfire;
-    public bool syncLocalRotation = true;
+    //public bool syncLocalRotation = true;
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
-            stream.SendNext(GetComponent<Rigidbody>().rotation);
+            //stream.SendNext(GetComponent<Rigidbody>().rotation);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
         }
         else
@@ -60,6 +59,7 @@ public class Player : Photon.MonoBehaviour
             camera.SetActive(false);
             //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
+            //gameObject.transform.rotation
 
 
         }

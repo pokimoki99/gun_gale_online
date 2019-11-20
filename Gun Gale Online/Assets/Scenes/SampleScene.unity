@@ -2323,7 +2323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoretext: {fileID: 1806142806}
   ammotext: {fileID: 1680127617}
-  ammocount: 30
+  shotgun: {fileID: 3937053655351238126, guid: ba883ac541d2d5c4589ac0d6b8733375, type: 3}
+  ammocount: 500
   score: 0
 --- !u!114 &927143936
 MonoBehaviour:
@@ -2368,7 +2369,7 @@ Transform:
   m_GameObject: {fileID: 927143934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3765,7 +3766,7 @@ GameObject:
   - component: {fileID: 1847368788}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

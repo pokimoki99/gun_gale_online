@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public Text scoretext;
     public Text ammotext;
+    //public BulletFireScript shotgun_1;
+    public BulletFireScript shotgun;
 
-    public int ammocount = 30;
+    public int ammocount = 500;
 
     public int score = 0;
 
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void incscore(int s)
     {
         score = score + s;
+        
         UpdateScore();
     }
 
@@ -82,6 +85,11 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
+        if (score == 0)
+        {
+            //shotgun_1.shotgun = true;
+            shotgun.shotgun = true;
+        }
         if (score==10)
         {
             //gamewin
