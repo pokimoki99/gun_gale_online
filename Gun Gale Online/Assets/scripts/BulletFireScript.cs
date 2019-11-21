@@ -69,5 +69,16 @@ public class BulletFireScript : MonoBehaviour
                 GameManager.Instance.fire();
             }
         }
+        if (Input.GetMouseButton(0) && (GameManager.Instance.ammocount > 0))
+        {
+            if (spread.Assault_rifle_spread == true)
+            {
+                //shotgun = false;
+                gun = new Vector3(Gun_pos.transform.position.x, Gun_pos.transform.position.y, Gun_pos.transform.position.z);
+                Instantiate(bulletprefab, gun, transform.rotation);
+                GameManager.Instance.fire();
+            }
+
+        }
     }
 }

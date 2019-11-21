@@ -10,11 +10,13 @@ public class BulletScript : MonoBehaviour
     public GameObject explosionprefab;
     public float force = 500.0f;
     public bool shotgun_spread=false;
+    public bool Assault_rifle_spread = false;
     Vector3 rand;
 
     // Use this for initialization
     void Start()
     {
+        Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         if (shotgun_spread == true)
         {
             //GetComponent<Rigidbody>().AddForce((transform.forward+rand) * force);
@@ -22,6 +24,11 @@ public class BulletScript : MonoBehaviour
             //bullet.transform.Rotate(0.0f,bullet.transform.rotation.y + 10.0f,0.0f);
             Debug.Log("work?");
 
+        }
+        else if (Assault_rifle_spread == true)
+        {
+            Debug.Log("rifle?");
+            GetComponent<Rigidbody>().AddForce(transform.forward * force);
         }
         else
         {
