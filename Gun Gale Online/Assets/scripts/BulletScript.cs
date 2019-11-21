@@ -9,6 +9,7 @@ public class BulletScript : MonoBehaviour
     public GameObject bullet;
     public GameObject explosionprefab;
     public float force = 500.0f;
+    public bool pistol_spread=false;
     public bool shotgun_spread=false;
     public bool Assault_rifle_spread = false;
     Vector3 rand;
@@ -19,9 +20,7 @@ public class BulletScript : MonoBehaviour
         Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         if (shotgun_spread == true)
         {
-            //GetComponent<Rigidbody>().AddForce((transform.forward+rand) * force);
-            GetComponent<Rigidbody>().AddForce(rand * force);
-            //bullet.transform.Rotate(0.0f,bullet.transform.rotation.y + 10.0f,0.0f);
+            GetComponent<Rigidbody>().AddForce(transform.forward * force);
             Debug.Log("work?");
 
         }
@@ -41,13 +40,7 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        //if (col.gameObject.tag == "EnemyNPC")
-        //{
-        //    gm.incscore(1);
-        //    Destroy(col.gameObject);// the cube
-        //    explosion = Instantiate(explosionprefab, this.transform.position, this.transform.rotation) as GameObject;
-        //    Destroy(explosion, 5.0f); // the explosion
-        //}
+
         if (col.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
@@ -55,20 +48,10 @@ public class BulletScript : MonoBehaviour
         }
         if (col.gameObject.tag == "Player")
         {
-            gm.incscore(10);
+            gm.incscore(1);
             Destroy(gameObject);
 
         }
-        //else if (col.gameObject.tag == "Sphere")
-        //{
-        //    gm.incscore(20);
-        //    Destroy(col.gameObject);// the cube
-        //    explosion = Instantiate(explosionprefab, this.transform.position, this.transform.rotation) as GameObject;
-        //    Destroy(explosion, 5.0f); // the explosion
-        //}
-
-
-        //Destroy(gameObject); // the bullet
 
     }
     void main()

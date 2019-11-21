@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Photon.MonoBehaviour
 {
@@ -14,7 +15,13 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncEndRotation = Vector3.zero;
     public GameObject camera;
     public GameObject bullet;
+
     //public bool syncLocalRotation = true;
+    public int score = 0;
+    public BulletScript spread;
+    public GameObject pistol;
+    public GameObject shotgun;
+    public GameObject rifle;
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
@@ -42,12 +49,61 @@ public class Player : Photon.MonoBehaviour
     void Awake()
     {
         lastSynchronizationTime = Time.time;
+        pistol.SetActive(false);
+        shotgun.SetActive(false);
+        rifle.SetActive(false);
+        spread.pistol_spread = false;
+        spread.shotgun_spread = false;
+        spread.Assault_rifle_spread = false;
 
     }
     void Update()
     {
-         //if (syncLocalRotation) myTransform.localRotation = Quaternion.Slerp(lhs.rot, rhs.rot, t);
-       
+        //if (syncLocalRotation) myTransform.localRotation = Quaternion.Slerp(lhs.rot, rhs.rot, t);
+
+        if (Input.GetKey(KeyCode.K))
+        {
+            score = 1;
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            score = 0;
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            score = 2;
+        }
+        if (score == 0)
+        {
+            spread.pistol_spread = true;
+            spread.shotgun_spread = false;
+            spread.Assault_rifle_spread = false;
+            pistol.SetActive(true);
+            shotgun.SetActive(false);
+            rifle.SetActive(false);
+
+        }
+        if (score == 1)
+        {
+            spread.pistol_spread = false;
+            spread.shotgun_spread = true;
+            spread.Assault_rifle_spread = false;
+            pistol.SetActive(false);
+            shotgun.SetActive(true);
+            rifle.SetActive(false);
+
+        }
+        if (score == 2)
+        {
+            spread.Assault_rifle_spread = true;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            rifle.SetActive(true);
+
+        }
+
         if (photonView.isMine)
         {
             InputMovement();
