@@ -215,12 +215,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4729880106168077915}
   - component: {fileID: 4729880106171492283}
-  - component: {fileID: -5412118068612316381}
   - component: {fileID: 4729880106162565403}
   - component: {fileID: 4729880106165521307}
   - component: {fileID: 5517176292634325277}
   - component: {fileID: 6218226201753979461}
-  - component: {fileID: 9002415387680532664}
   - component: {fileID: -5530904931755168922}
   m_Layer: 0
   m_Name: mc
@@ -264,20 +262,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &-5412118068612316381
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4729880106167849595}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4729880106162565403
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -286,14 +270,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4729880106167849595}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 1000
+  m_Drag: 1000
+  m_AngularDrag: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &4729880106165521307
 AudioSource:
   m_ObjectHideFlags: 0
@@ -440,25 +424,6 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &9002415387680532664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4729880106167849595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddda94bd7c4c8643b5d7bfb085c5784, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axes: 0
-  sensitivityX: 7
-  sensitivityY: 7
-  minimumX: -360
-  maximumX: 360
-  minimumY: -60
-  maximumY: 60
 --- !u!114 &-5530904931755168922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +444,15 @@ MonoBehaviour:
   pistol: {fileID: 4673562487129105226}
   shotgun: {fileID: 7485426546355050204}
   rifle: {fileID: 6267217710761483519}
+  jumpSpeed: 8
+  gravity: 20
+  axes: 0
+  sensitivityX: 7
+  sensitivityY: 7
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
 --- !u!1 &5104315514387878209
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,11 +618,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SG 1
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: abe37011717bb0c489a07ae7a485a762,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: abe37011717bb0c489a07ae7a485a762,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -721,15 +690,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abe37011717bb0c489a07ae7a485a762, type: 3}
---- !u!1 &7485426546355050204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: abe37011717bb0c489a07ae7a485a762,
-    type: 3}
-  m_PrefabInstance: {fileID: 1495334570949267413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5889241633350968527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: abe37011717bb0c489a07ae7a485a762,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495334570949267413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7485426546355050204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: abe37011717bb0c489a07ae7a485a762,
     type: 3}
   m_PrefabInstance: {fileID: 1495334570949267413}
   m_PrefabAsset: {fileID: 0}
@@ -791,18 +760,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a93da62b3524a4ab8322a0acfbd685, type: 3}
@@ -902,6 +859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8800806379075190366, guid: 5f990c2ae6c900b4390c5cb170834f3f,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800806379075190366, guid: 5f990c2ae6c900b4390c5cb170834f3f,
+        type: 3}
       propertyPath: m_Root
       value: 
       objectReference: {fileID: 1053410343728551558}
@@ -910,7 +872,8 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 964171143312218156, guid: 5f990c2ae6c900b4390c5cb170834f3f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5f990c2ae6c900b4390c5cb170834f3f, type: 3}
 --- !u!4 &1053410343728551558 stripped
 Transform:
@@ -940,6 +903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 375208566235304065, guid: bd07640cef4aa564fb8d3f2eb06defb6,
+        type: 3}
+      propertyPath: m_Name
+      value: rifle1
       objectReference: {fileID: 0}
     - target: {fileID: 3961880904885822997, guid: bd07640cef4aa564fb8d3f2eb06defb6,
         type: 3}
@@ -995,11 +963,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 375208566235304065, guid: bd07640cef4aa564fb8d3f2eb06defb6,
-        type: 3}
-      propertyPath: m_Name
-      value: rifle1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd07640cef4aa564fb8d3f2eb06defb6, type: 3}

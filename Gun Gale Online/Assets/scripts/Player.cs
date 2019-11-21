@@ -23,6 +23,28 @@ public class Player : Photon.MonoBehaviour
     public GameObject shotgun;
     public GameObject rifle;
 
+    CharacterController characterController;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
+
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 moveRotation = Vector3.zero;
+
+
+    public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
+    public RotationAxes axes = RotationAxes.MouseXAndY;
+    public float sensitivityX = 15F;
+    public float sensitivityY = 15F;
+
+    public float minimumX = -360F;
+    public float maximumX = 360F;
+
+    public float minimumY = -60F;
+    public float maximumY = 60F;
+
+    float rotationY = 0F;
+
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
         if (stream.isWriting)
@@ -48,6 +70,7 @@ public class Player : Photon.MonoBehaviour
 
     void Awake()
     {
+        gameObject.GetComponent<Rigidbody>();
         lastSynchronizationTime = Time.time;
         pistol.SetActive(false);
         shotgun.SetActive(false);
@@ -55,6 +78,8 @@ public class Player : Photon.MonoBehaviour
         spread.pistol_spread = false;
         spread.shotgun_spread = false;
         spread.Assault_rifle_spread = false;
+
+        characterController = GetComponent<CharacterController>();
 
     }
     void Update()
@@ -115,7 +140,6 @@ public class Player : Photon.MonoBehaviour
             camera.SetActive(false);
             //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
-            //gameObject.transform.rotation
 
 
         }
@@ -123,23 +147,45 @@ public class Player : Photon.MonoBehaviour
 
     void InputMovement()
     {
-        if (Input.GetKey(KeyCode.W))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position
-                + Vector3.forward * speed * Time.deltaTime);
+        if (axes == RotationAxes.MouseXAndY)
+        {
+            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
-        if (Input.GetKey(KeyCode.S))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position
-                - Vector3.forward * speed * Time.deltaTime);
+            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-        if (Input.GetKey(KeyCode.D))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position
-                + Vector3.right * speed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+        }
+        else if (axes == RotationAxes.MouseX)
+        {
+            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+        }
+        else
+        {
+            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-        if (Input.GetKey(KeyCode.A))
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position
-                - Vector3.right * speed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+        }
 
+        if (Input.GetKey("w"))
+        {
+            transform.position += camera.transform.forward * (Time.deltaTime * speed);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 80, 2 * Time.deltaTime);
+        }
 
+        if (Input.GetKey("s"))
+        {
+            transform.position += -camera.transform.forward * (Time.deltaTime * speed);
+        }
+        if (Input.GetKey("a"))
+        {
+            transform.position += -camera.transform.right * (Time.deltaTime * speed);
+        }
+        if (Input.GetKey("d"))
+        {
+            transform.position += camera.transform.right * (Time.deltaTime * speed);
+        }
     }
 
     private void SynchedMovement()
