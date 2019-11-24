@@ -13,12 +13,19 @@ public class healthbar : MonoBehaviour
         barImage = transform.Find("Bar").GetComponent<Image>();
 
         health = new Health();
+       
+        
     }
     private void Update()
     {
         health.Update();
 
         barImage.fillAmount = health.GetHealthNormalized();
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            health.Damage(30);
+        }
     }
 }
 public class Health
@@ -30,7 +37,7 @@ public class Health
 
     public Health()
     {
-        healthAmount = 0;
+        healthAmount = 90;
         healthRegenAmount = 10f;
     }
     public void Update()
@@ -42,6 +49,11 @@ public class Health
         if (healthAmount >= DamageAmount)
         {
             healthAmount -= DamageAmount;
+            Debug.Log("Damage Taken "+DamageAmount);
+        }
+        else
+        {
+            Debug.Log("Too much Damage");
         }
     }
     public float GetHealthNormalized()
