@@ -96,10 +96,12 @@ public class Player : Photon.MonoBehaviour
         }
         if (Input.GetKey(KeyCode.J))
         {
+
             score = 2;
         }
         if (score == 0)
         {
+            //GameManager.Instance.Ammo()
             spread.pistol_spread = true;
             spread.shotgun_spread = false;
             spread.Assault_rifle_spread = false;

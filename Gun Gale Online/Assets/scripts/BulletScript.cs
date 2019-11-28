@@ -26,14 +26,14 @@ public class BulletScript : MonoBehaviour
         Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         if (shotgun_spread == true)
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward * force);
+            GetComponent<Rigidbody>().AddForce(transform.forward * (force-250.0f));
             Debug.Log("work?");
 
         }
         else if (Assault_rifle_spread == true)
         {
             Debug.Log("rifle?");
-            GetComponent<Rigidbody>().AddForce(transform.forward * force);
+            GetComponent<Rigidbody>().AddForce(transform.forward * (force+200.0f));
         }
         else
         {

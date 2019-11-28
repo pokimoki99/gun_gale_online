@@ -20,6 +20,7 @@ public class BulletFireScript : Photon.MonoBehaviour
     public GameObject Shotgun_pos_4;
     public GameObject Shotgun_pos_5;
     public float BulletForce = 500.0f;
+    public bool rifle = false;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +35,6 @@ public class BulletFireScript : Photon.MonoBehaviour
 
             if (spread.shotgun_spread == true)
             {
-                
                 spread.Assault_rifle_spread = false;
                 spread.shotgun_spread = true;
 
@@ -94,11 +94,16 @@ public class BulletFireScript : Photon.MonoBehaviour
         {
             if (spread.Assault_rifle_spread == true)
             {
-                spread.shotgun_spread = false;
-                gun = new Vector3(Assault_pos.transform.position.x, Assault_pos.transform.position.y, Assault_pos.transform.position.z);
-                Fire(Assault_pos.transform.position, transform.rotation);
-                //Instantiate(bulletprefab, gun, transform.rotation);
-                GameManager.Instance.fire();
+                if (rifle==false)
+                {
+                    spread.shotgun_spread = false;
+                    gun = new Vector3(Assault_pos.transform.position.x, Assault_pos.transform.position.y, Assault_pos.transform.position.z);
+                    Fire(Assault_pos.transform.position, transform.rotation);
+                    //Instantiate(bulletprefab, gun, transform.rotation);
+                    GameManager.Instance.fire();
+                    StartCoroutine(Rapid());
+                }
+
             }
 
         }
@@ -113,5 +118,12 @@ public class BulletFireScript : Photon.MonoBehaviour
         {
             this.photonView.RPC("Fire", PhotonTargets.OthersBuffered, pos, dir);
         }
+    }
+
+    IEnumerator Rapid()
+    {
+        rifle = true;
+        yield return new WaitForSeconds(0.05f);
+        rifle = false;
     }
 }
