@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BulletScript : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class BulletScript : MonoBehaviour
     public bool pistol_spread=false;
     public bool shotgun_spread=false;
     public bool Assault_rifle_spread = false;
+
+    public healthbar _hp;
+
+    
     Vector3 rand;
 
     // Use this for initialization
@@ -40,7 +45,7 @@ public class BulletScript : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-
+       
         if (col.gameObject.tag == "Terrain")
         {
             Destroy(gameObject);
@@ -48,12 +53,16 @@ public class BulletScript : MonoBehaviour
         }
         if (col.gameObject.tag == "Player")
         {
+            //GetComponent<healthbar.Health>().Damage(DamageAmount: 10);
+            //healthbar.Health.Damage(5);
+            _hp.health.Damage(5);
+
+            //healthbar.
             gm.incscore(1);
             Destroy(gameObject);
-
         }
-
     }
+
     void main()
     {
         if (gameObject.transform.position.y <= 0)

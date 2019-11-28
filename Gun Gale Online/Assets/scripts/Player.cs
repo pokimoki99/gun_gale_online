@@ -16,6 +16,8 @@ public class Player : Photon.MonoBehaviour
     public GameObject camera;
     public GameObject bullet;
 
+    //public healthbar playerhealth;
+
     //public bool syncLocalRotation = true;
     public int score = 0;
     public BulletScript spread;
