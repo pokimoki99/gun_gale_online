@@ -4248,6 +4248,10 @@ MonoBehaviour:
   ammotext: {fileID: 1680127617}
   ammocount: 500
   _score: {fileID: -5530904931755168922, guid: ba883ac541d2d5c4589ac0d6b8733375, type: 3}
+  pistol: 0
+  shotgun: 0
+  sniper: 0
+  rifle: 0
 --- !u!4 &1315203613
 Transform:
   m_ObjectHideFlags: 0
@@ -5658,7 +5662,7 @@ GameObject:
   - component: {fileID: 1822843349}
   m_Layer: 0
   m_Name: terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
