@@ -13,6 +13,7 @@ public class BulletScript : MonoBehaviour
     public bool pistol_spread=false;
     public bool shotgun_spread=false;
     public bool Assault_rifle_spread = false;
+    public bool sniper_spread = false;
 
     public healthbar _hp;
 
@@ -34,6 +35,11 @@ public class BulletScript : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(transform.forward * (force-250.0f));
             Debug.Log("work?");
 
+        }
+        else if (sniper_spread == true)
+
+        {
+            GetComponent<Rigidbody>().AddForce(transform.forward * (force * 10));
         }
         else if (Assault_rifle_spread == true)
         {
