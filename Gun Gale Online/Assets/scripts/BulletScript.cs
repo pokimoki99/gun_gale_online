@@ -14,6 +14,12 @@ public class BulletScript : MonoBehaviour
     public bool Assault_rifle_spread = false;
     Vector3 rand;
 
+
+    private float syncTime = 0f;
+    private float syncDelay = 0f;
+    private Vector3 syncStartPosition = Vector3.zero;
+    private Vector3 syncEndPosition = Vector3.zero;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +41,7 @@ public class BulletScript : MonoBehaviour
         }
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
 
     }
 
@@ -65,5 +72,13 @@ public class BulletScript : MonoBehaviour
     public void random()
     {
         rand = new Vector3(0, Random.Range(0.0f, 1.0f), 0);
+    }
+
+    public void SynchedBullet()
+    {
+
+        syncTime += Time.deltaTime;
+        GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition,
+            syncEndPosition, syncTime / syncDelay);
     }
 }

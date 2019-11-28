@@ -45,7 +45,7 @@ public class Player : Photon.MonoBehaviour
     float rotationY = 0F;
 
 
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
         if (stream.isWriting)
         {
@@ -68,7 +68,7 @@ public class Player : Photon.MonoBehaviour
         }
     }
 
-    void Awake()
+    public void Awake()
     {
         gameObject.GetComponent<Rigidbody>();
         lastSynchronizationTime = Time.time;
@@ -82,7 +82,7 @@ public class Player : Photon.MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
     }
-    void Update()
+    public void Update()
     {
         //if (syncLocalRotation) myTransform.localRotation = Quaternion.Slerp(lhs.rot, rhs.rot, t);
 
@@ -129,14 +129,16 @@ public class Player : Photon.MonoBehaviour
 
         }
 
-        if (photonView.isMine)
+        if (this.photonView.isMine)
         {
             InputMovement();
             bullet.SetActive(true);
+            gameObject.GetComponent<BulletFireScript>().enabled = true;
         }
         else
         {
             SynchedMovement();
+            spread.SynchedBullet();
             camera.SetActive(false);
             //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
@@ -145,7 +147,7 @@ public class Player : Photon.MonoBehaviour
         }
     }
 
-    void InputMovement()
+    public void InputMovement()
     {
         if (axes == RotationAxes.MouseXAndY)
         {
@@ -188,12 +190,13 @@ public class Player : Photon.MonoBehaviour
         }
     }
 
-    private void SynchedMovement()
+    public void SynchedMovement()
     {
         syncTime += Time.deltaTime;
         GetComponent<Rigidbody>().position = Vector3.Lerp(syncStartPosition,
             syncEndPosition, syncTime / syncDelay);
     }
+
 
 
 }
