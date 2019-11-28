@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Player _score;
 
-    public bool pistol, shotgun, rifle = false;
+    public bool pistol, shotgun,sniper, rifle = false;
 
     public static GameManager Instance
     {
@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviour
         {
             _score.score=2;
         }
+        if (Input.GetKey(KeyCode.H))
+        {
+            _score.score=3;
+        }
         if (Input.GetKey(KeyCode.R))
         {
             ammocount = 0;
@@ -120,7 +124,6 @@ public class GameManager : MonoBehaviour
                 ammocount = 15;
                 pistol = true;
             }
-
         }
         if (_score.score==1)
         {
@@ -129,7 +132,6 @@ public class GameManager : MonoBehaviour
                 ammocount = 28;
                 shotgun = true;
             }
-
         }
         if (_score.score==2)
         {
@@ -138,7 +140,14 @@ public class GameManager : MonoBehaviour
                 ammocount = 40;
                 rifle = true;
             }
-
+        }
+        if (_score.score == 3)
+        {
+            if (sniper == false)
+            {
+                ammocount = 1;
+                sniper = true;
+            }
         }
     }
     public void Reload()
@@ -153,10 +162,12 @@ public class GameManager : MonoBehaviour
         pistol = true;
         shotgun = true;
         rifle = true;
+        sniper = true;
         //yield on a new YieldInstruction that waits for 5 seconds.
         pistol = false;
         shotgun = false;
         rifle = false;
+        sniper = false;
         yield return new WaitForSeconds(1);
 
         //After we have waited 5 seconds print the time again.

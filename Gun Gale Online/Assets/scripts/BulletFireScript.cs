@@ -77,6 +77,11 @@ public class BulletFireScript : Photon.MonoBehaviour
 
 
             }
+            if (spread.sniper_spread == true)
+            {
+                Fire(Gun_pos.transform.position, transform.rotation);
+                GameManager.Instance.fire();
+            }
             if (spread.Assault_rifle_spread == true)
             {
 
