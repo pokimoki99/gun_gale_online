@@ -24,6 +24,7 @@ public class Player : Photon.MonoBehaviour
     public GameObject pistol;
     public GameObject shotgun;
     public GameObject rifle;
+    public GameObject sniper;
 
     CharacterController characterController;
     public float jumpSpeed = 8.0f;
@@ -77,9 +78,11 @@ public class Player : Photon.MonoBehaviour
         pistol.SetActive(false);
         shotgun.SetActive(false);
         rifle.SetActive(false);
+        sniper.SetActive(false);
         spread.pistol_spread = false;
         spread.shotgun_spread = false;
         spread.Assault_rifle_spread = false;
+        spread.sniper_spread = false;
 
         characterController = GetComponent<CharacterController>();
 
@@ -98,8 +101,11 @@ public class Player : Photon.MonoBehaviour
         }
         if (Input.GetKey(KeyCode.J))
         {
-
             score = 2;
+        }
+        if (Input.GetKey(KeyCode.H))
+        {
+            score = 3;
         }
         if (score == 0)
         {
@@ -107,8 +113,10 @@ public class Player : Photon.MonoBehaviour
             spread.pistol_spread = true;
             spread.shotgun_spread = false;
             spread.Assault_rifle_spread = false;
+            spread.sniper_spread = false;
             pistol.SetActive(true);
             shotgun.SetActive(false);
+            sniper.SetActive(false);
             rifle.SetActive(false);
 
         }
@@ -117,8 +125,10 @@ public class Player : Photon.MonoBehaviour
             spread.pistol_spread = false;
             spread.shotgun_spread = true;
             spread.Assault_rifle_spread = false;
+            spread.sniper_spread = false;
             pistol.SetActive(false);
             shotgun.SetActive(true);
+            sniper.SetActive(false);
             rifle.SetActive(false);
 
         }
@@ -127,10 +137,22 @@ public class Player : Photon.MonoBehaviour
             spread.Assault_rifle_spread = true;
             spread.shotgun_spread = false;
             spread.pistol_spread = false;
+            spread.sniper_spread = false;
             shotgun.SetActive(false);
             pistol.SetActive(false);
+            sniper.SetActive(false);
             rifle.SetActive(true);
-
+        }
+        if (score == 3)
+        {
+            spread.sniper_spread = true;
+            spread.Assault_rifle_spread = false;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            rifle.SetActive(false);
+            sniper.SetActive(true);
         }
 
         if (this.photonView.isMine)
