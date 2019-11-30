@@ -7,7 +7,7 @@ public class healthbar : MonoBehaviour
 {
     private Image barImage;
     public Health health;
-
+    //public bool Damage_Taken = false;
     private void Awake()
     {
         barImage = transform.Find("Bar").GetComponent<Image>();
@@ -23,7 +23,7 @@ public class healthbar : MonoBehaviour
         barImage.fillAmount = health.GetHealthNormalized();
     }
 
-    public class Health:MonoBehaviour
+    public class Health
     {
         public const int HEALTH_MAX = 100;
 
@@ -36,10 +36,21 @@ public class healthbar : MonoBehaviour
         }
         public void Update()
         {
+            if(healthAmount < HEALTH_MAX)
+            {
             healthAmount += healthRegenAmount * Time.deltaTime;
+            }
+            
         }
+        
+       
+        
         public void Damage(int DamageAmount)
         {
+            if (BulletScript.Damage_Taken = true)
+            {
+
+            }
             if (healthAmount >= DamageAmount)
             {
                 healthAmount -= DamageAmount;
