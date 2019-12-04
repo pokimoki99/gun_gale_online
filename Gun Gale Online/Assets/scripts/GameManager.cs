@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     public Text scoretext;
     public Text ammotext;
     public int ammocount = 500;
-
-    public Player _score;
+    int score;
 
     public bool pistol, shotgun,sniper, rifle = false;
 
@@ -26,28 +25,28 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _score.score = 0;
+        score = 0;
         UpdateScore();
     }
 
     // Update score text field
     public void UpdateScore()
     {
-        scoretext.text = "Score: " + _score.score ;
+        scoretext.text = "Score: " + score ;
         ammotext.text = "Ammo: " + ammocount;
     }
 
     // set the score
     public void setscore(int s)
     {
-        _score.score = s;
+        score = s;
         UpdateScore();
     }
 
     // increase the score
     public void incscore(int s)
     {
-        _score.score = _score.score + s;
+        score = score + s;
 
         
         UpdateScore();
@@ -85,19 +84,19 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.K))
         {
-            _score.score=1;
+            score=1;
         }
         if (Input.GetKey(KeyCode.L))
         {
-            _score.score=0;
+            score=0;
         }
         if (Input.GetKey(KeyCode.J))
         {
-            _score.score=2;
+            score=2;
         }
         if (Input.GetKey(KeyCode.H))
         {
-            _score.score=3;
+            score=3;
         }
         if (Input.GetKey(KeyCode.R))
         {
@@ -110,14 +109,14 @@ public class GameManager : MonoBehaviour
         //{
         //    Reload();
         //}
-        if (_score.score == 10)
+        if (score == 10)
         {
             //gamewin
         }
     }
     public void Ammo()
     {
-        if (_score.score==0)
+        if (score==0)
         {
             if (pistol==false)
             {
@@ -125,7 +124,7 @@ public class GameManager : MonoBehaviour
                 pistol = true;
             }
         }
-        if (_score.score==1)
+        if (score==1)
         {
             if (shotgun==false)
             {
@@ -133,7 +132,7 @@ public class GameManager : MonoBehaviour
                 shotgun = true;
             }
         }
-        if (_score.score==2)
+        if (score==2)
         {
             if (rifle==false)
             {
@@ -141,7 +140,7 @@ public class GameManager : MonoBehaviour
                 rifle = true;
             }
         }
-        if (_score.score == 3)
+        if (score == 3)
         {
             if (sniper == false)
             {

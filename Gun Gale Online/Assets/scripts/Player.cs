@@ -93,18 +93,22 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKey(KeyCode.K))
         {
+            GameManager.Instance.setscore(1);
             score = 1;
         }
         if (Input.GetKey(KeyCode.L))
         {
+            GameManager.Instance.setscore(0);
             score = 0;
         }
         if (Input.GetKey(KeyCode.J))
         {
+            GameManager.Instance.setscore(2);
             score = 2;
         }
         if (Input.GetKey(KeyCode.H))
         {
+            GameManager.Instance.setscore(3);
             score = 3;
         }
         if (score == 0)
@@ -193,26 +197,30 @@ public class Player : Photon.MonoBehaviour
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
-            transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+            //transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
         }
 
         if (Input.GetKey("w"))
         {
-            transform.position += camera.transform.forward * (Time.deltaTime * speed);
+            //transform.position += camera.transform.forward * (Time.deltaTime * speed);
+            gameObject.GetComponent<Rigidbody>().velocity += camera.transform.forward;
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 80, 2 * Time.deltaTime);
         }
 
         if (Input.GetKey("s"))
         {
-            transform.position += -camera.transform.forward * (Time.deltaTime * speed);
+            //transform.position += -camera.transform.forward * (Time.deltaTime * speed);
+            gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.forward * (Time.deltaTime * speed);
         }
         if (Input.GetKey("a"))
         {
-            transform.position += -camera.transform.right * (Time.deltaTime * speed);
+            //transform.position += -camera.transform.right * (Time.deltaTime * speed);
+            gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.right * (Time.deltaTime * speed);
         }
         if (Input.GetKey("d"))
         {
-            transform.position += camera.transform.right * (Time.deltaTime * speed);
+            //transform.position += camera.transform.right * (Time.deltaTime * speed);
+            gameObject.GetComponent<Rigidbody>().velocity += camera.transform.right * (Time.deltaTime * speed);
         }
     }
 

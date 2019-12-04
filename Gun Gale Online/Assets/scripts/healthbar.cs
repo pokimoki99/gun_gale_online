@@ -47,10 +47,10 @@ public class healthbar : MonoBehaviour
         
         public void Damage(int DamageAmount)
         {
-            if (BulletScript.Damage_Taken = true)
-            {
+            //if (BulletScript.Damage_Taken = true)
+            //{
 
-            }
+            //}
             if (healthAmount >= DamageAmount)
             {
                 healthAmount -= DamageAmount;
