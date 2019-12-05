@@ -17,6 +17,7 @@ public class Player : Photon.MonoBehaviour
     public GameObject bullet;
 
     //public healthbar playerhealth;
+    //public healthbar _health;
 
     //public bool syncLocalRotation = true;
     public int score = 0;
@@ -164,6 +165,7 @@ public class Player : Photon.MonoBehaviour
             InputMovement();
             bullet.SetActive(true);
             gameObject.GetComponent<BulletFireScript>().enabled = true;
+
         }
         else
         {
@@ -172,6 +174,7 @@ public class Player : Photon.MonoBehaviour
             camera.SetActive(false);
             //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
+            //_health.GetComponent<healthbar>().enabled = false;
 
 
         }
