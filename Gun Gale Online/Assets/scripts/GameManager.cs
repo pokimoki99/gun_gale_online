@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Text scoretext;
     public Text ammotext;
     public int ammocount = 500;
+    public Text gettingScore;
     int score;
 
     public bool pistol, shotgun,sniper, rifle = false;
@@ -51,7 +52,10 @@ public class GameManager : MonoBehaviour
         
         UpdateScore();
     }
-
+    public void GetScore()
+    {
+        score = score;
+    }
     void Awake()
     {
         if (instance)
