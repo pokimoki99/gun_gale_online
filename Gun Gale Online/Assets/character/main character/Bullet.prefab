@@ -160,6 +160,7 @@ MonoBehaviour:
   Assault_rifle_spread: 0
   sniper_spread: 0
   _hp: {fileID: 0}
+  Damage_Taken: 0
 --- !u!1001 &6960390530339562928
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -18,35 +19,57 @@ public class NetworkManager : MonoBehaviour
     public GameObject[] spawnSpots1;
     public GameObject[] spawnSpots2;
 
+    string name;
+    private InputField input;
+    bool nameset;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings("v4.2");
         spawnSpots1 = GameObject.FindGameObjectsWithTag("spawnpoints");
         spawnSpots2 = GameObject.FindGameObjectsWithTag("spawnpoints2");
+        PhotonNetwork.player.NickName = "playerUserNameHere";
+        nameset=false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnGUI()
     {
+        
         if (!PhotonNetwork.connected)
         {
             GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
         }
         else if (PhotonNetwork.room==null)
         {
-            if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+            name = GUI.TextField(new Rect(Screen.width / 2 - 300, Screen.height / 2, 100, 50), name);
+            if (GUI.Button(new Rect(100, 100, 250, 100), "Enter Your Name"))
             {
-                PhotonNetwork.CreateRoom(roomName, new RoomOptions()
-                { MaxPlayers = 4, IsOpen = true, IsVisible = true }, lobbyName);
+                PhotonNetwork.player.NickName = name;
+                nameset = true;
             }
+            if (nameset==true)
+            {
+                if (GUI.Button(new Rect(300, 100, 250, 100), "Start Server"))
+                {
+                    PhotonNetwork.CreateRoom(roomName, new RoomOptions()
+                    { MaxPlayers = 4, IsOpen = true, IsVisible = true }, lobbyName);
+                }
+            }
+
             if (roomsList!=null)
             {
+                
+                //PhotonNetwork.player.NickName = "playerUserNameHere";
+
                 if (GUI.Button(new Rect(100, 300, 250, 100),
                     "Team 1"))
                 {
@@ -111,5 +134,10 @@ public class NetworkManager : MonoBehaviour
            
         //}
 
+    }
+    public void GetInput(string name1)
+    {
+        Debug.Log(name1);
+        input.text = "";
     }
 }

@@ -16,6 +16,7 @@ public class BulletScript : MonoBehaviour
     public bool sniper_spread = false;
 
     public healthbar _hp;
+    public bool Damage_Taken;
 
     
     Vector3 rand;
@@ -33,7 +34,7 @@ public class BulletScript : MonoBehaviour
         if (shotgun_spread == true)
         {
             GetComponent<Rigidbody>().AddForce(transform.forward * (force-250.0f));
-            Debug.Log("work?");
+            //Debug.Log("work?");
 
         }
         else if (sniper_spread == true)
@@ -43,7 +44,7 @@ public class BulletScript : MonoBehaviour
         }
         else if (Assault_rifle_spread == true)
         {
-            Debug.Log("rifle?");
+            //Debug.Log("rifle?");
             GetComponent<Rigidbody>().AddForce(transform.forward * (force+200.0f));
         }
         else
@@ -68,10 +69,11 @@ public class BulletScript : MonoBehaviour
         {
             //GetComponent<healthbar.Health>().Damage(DamageAmount: 10);
             //healthbar.Health.Damage(5);
-            _hp.health.Damage(5);
+            //_hp.Damage(5);
+            Damage_Taken = true;
 
             //healthbar.
-            gm.incscore(1);
+            //gm.incscore(1);
             Destroy(gameObject);
         }
     }
