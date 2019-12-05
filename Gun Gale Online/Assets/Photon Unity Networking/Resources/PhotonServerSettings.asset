@@ -32,6 +32,7 @@ MonoBehaviour:
   - ColorRpc
   - DestroyRpc
   - DoJump
+  - Fire
   - Flash
   - InstantiateRpc
   - Marco
@@ -43,6 +44,4 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
-  - BulletTransit
-  - Fire
   DisableAutoOpenWizard: 1
