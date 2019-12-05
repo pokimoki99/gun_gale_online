@@ -52,10 +52,6 @@ public class GameManager : MonoBehaviour
         
         UpdateScore();
     }
-    public void GetScore()
-    {
-        score = score;
-    }
     void Awake()
     {
         if (instance)

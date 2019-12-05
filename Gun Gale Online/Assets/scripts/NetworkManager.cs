@@ -19,6 +19,8 @@ public class NetworkManager : MonoBehaviour
     public GameObject[] spawnSpots1;
     public GameObject[] spawnSpots2;
 
+    public int playerNumber;
+
     public string name;
     private InputField input;
     bool nameset;
@@ -130,10 +132,10 @@ public class NetworkManager : MonoBehaviour
             GameObject mySpawnSpot2 = spawnSpots2[Random.Range(0, spawnSpots2.Length)];
             pos = new Vector3(mySpawnSpot2.transform.position.x, mySpawnSpot2.transform.position.y + 0.4f, mySpawnSpot2.transform.position.z);
             GameObject Myplayer2 = (GameObject)PhotonNetwork.Instantiate("mc", pos, Quaternion.identity, 1);
-            //((MonoBehaviour)Myplayer2.GetComponent("Player")).enabled = true;
-           
-        //}
+        //((MonoBehaviour)Myplayer2.GetComponent("Player")).enabled = true;
 
+        //}
+        playerNumber++;
     }
     public void GetInput(string name1)
     {

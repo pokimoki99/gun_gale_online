@@ -15,7 +15,7 @@ public class BulletScript : MonoBehaviour
     public bool Assault_rifle_spread = false;
     public bool sniper_spread = false;
 
-    public healthbar _hp;
+    public healthbar.Health _hp;
     public bool Damage_Taken;
 
     
@@ -69,7 +69,9 @@ public class BulletScript : MonoBehaviour
         {
             //GetComponent<healthbar.Health>().Damage(DamageAmount: 10);
             //healthbar.Health.Damage(5);
-            //_hp.Damage(5);
+            _hp = FindObjectOfType<healthbar>().health;
+            _hp.Damage(5);
+            
             Damage_Taken = true;
 
             //healthbar.
