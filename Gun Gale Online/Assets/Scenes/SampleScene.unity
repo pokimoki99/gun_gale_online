@@ -1304,6 +1304,7 @@ MonoBehaviour:
   - {fileID: 699326536}
   - {fileID: 1046551894}
   - {fileID: 1549433651}
+  name: 
 --- !u!4 &257693921
 Transform:
   m_ObjectHideFlags: 0
@@ -4356,6 +4357,7 @@ MonoBehaviour:
   scoretext: {fileID: 1806142806}
   ammotext: {fileID: 1680127617}
   ammocount: 500
+  gettingScore: 
   pistol: 0
   shotgun: 0
   sniper: 0
