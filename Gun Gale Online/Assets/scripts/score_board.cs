@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class score_board : MonoBehaviour
 {
     public Text scoreboardtext;
-    GameManager gm;
-
+    public GameManager gm;
+   public NetworkManager nick;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,11 @@ public class score_board : MonoBehaviour
        
 
 
-        PhotonNetwork.player.NickName = "Boi21";
+        //PhotonNetwork.player.NickName = ;
 
 
-        scoreboardtext.text = PhotonNetwork.player.NickName + gm.scoretext;
+        //scoreboardtext.text = PhotonNetwork.player.NickName + gm.scoretext;
+        scoreboardtext.text = nick.name + " " +gm.gettingScore;
 
 
     }

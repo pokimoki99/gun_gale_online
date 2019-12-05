@@ -19,7 +19,7 @@ public class NetworkManager : MonoBehaviour
     public GameObject[] spawnSpots1;
     public GameObject[] spawnSpots2;
 
-    string name;
+    public string name;
     private InputField input;
     bool nameset;
 

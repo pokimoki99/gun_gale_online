@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     public Text scoretext;
     public Text ammotext;
     public int ammocount = 500;
-    public Text gettingScore;
+   
     int score;
-
+    public string gettingScore;
     public bool pistol, shotgun,sniper, rifle = false;
 
     public static GameManager Instance
@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         {
             //gamewin
         }
+        gettingScore = score.ToString();
     }
     public void Ammo()
     {
