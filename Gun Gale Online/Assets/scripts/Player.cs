@@ -206,21 +206,47 @@ public class Player : Photon.MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity += camera.transform.forward;
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 80, 2 * Time.deltaTime);
         }
+        if (Input.GetKeyUp("w"))
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (0,0,0);
+            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        }
+
 
         if (Input.GetKey("s"))
         {
             //transform.position += -camera.transform.forward * (Time.deltaTime * speed);
             gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.forward * (Time.deltaTime * speed);
         }
+
+        if (Input.GetKeyUp("s"))
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        }
+
         if (Input.GetKey("a"))
         {
             //transform.position += -camera.transform.right * (Time.deltaTime * speed);
             gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.right * (Time.deltaTime * speed);
         }
+
+        if (Input.GetKeyUp("a"))
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        }
+
         if (Input.GetKey("d"))
         {
             //transform.position += camera.transform.right * (Time.deltaTime * speed);
             gameObject.GetComponent<Rigidbody>().velocity += camera.transform.right * (Time.deltaTime * speed);
+        }
+
+        if (Input.GetKeyUp("d"))
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         }
     }
 

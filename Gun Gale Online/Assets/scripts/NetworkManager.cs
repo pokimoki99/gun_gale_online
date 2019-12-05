@@ -33,7 +33,6 @@ public class NetworkManager : MonoBehaviour
         PhotonNetwork.ConnectUsingSettings("v4.2");
         spawnSpots1 = GameObject.FindGameObjectsWithTag("spawnpoints");
         spawnSpots2 = GameObject.FindGameObjectsWithTag("spawnpoints2");
-        PhotonNetwork.player.NickName = "playerUserNameHere";
         nameset=false;
     }
 
