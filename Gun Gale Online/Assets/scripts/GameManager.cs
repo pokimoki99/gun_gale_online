@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
    
     public int score;
     public string gettingScore;
-    public bool pistol, shotgun,sniper, rifle = false;
+    public bool pistol, shotgun,sniper,crossbow, rifle = false;
 
     public static GameManager Instance
     {
@@ -103,6 +103,10 @@ public class GameManager : MonoBehaviour
         {
             score=3;
         }
+        if (Input.GetKey(KeyCode.C))
+        {
+            score = 4;
+        }
         if (Input.GetKey(KeyCode.R))
         {
             ammocount = 0;
@@ -150,8 +154,16 @@ public class GameManager : MonoBehaviour
         {
             if (sniper == false)
             {
-                ammocount = 1;
+                ammocount = 2;
                 sniper = true;
+            }
+        }
+        if (score == 4)
+        {
+            if (crossbow == false)
+            {
+                ammocount = 2;
+                crossbow = true;
             }
         }
     }
@@ -168,11 +180,13 @@ public class GameManager : MonoBehaviour
         shotgun = true;
         rifle = true;
         sniper = true;
+        crossbow = true;
         //yield on a new YieldInstruction that waits for 5 seconds.
         pistol = false;
         shotgun = false;
         rifle = false;
         sniper = false;
+        crossbow = false;
         yield return new WaitForSeconds(1);
 
         //After we have waited 5 seconds print the time again.
