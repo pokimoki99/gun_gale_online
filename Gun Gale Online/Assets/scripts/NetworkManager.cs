@@ -83,6 +83,7 @@ public class NetworkManager : MonoBehaviour
                         team = true;
                         Debug.Log(team);
                     }
+
                     for (int i = 0; i < roomsList.Length; i++)
                     {
                         if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100),
