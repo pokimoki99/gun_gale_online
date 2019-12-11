@@ -14,6 +14,7 @@ public class BulletScript : MonoBehaviour
     public bool shotgun_spread=false;
     public bool Assault_rifle_spread = false;
     public bool sniper_spread = false;
+    public bool crossbow_spread = false;
 
     public healthbar.Health _hp;
     
@@ -38,7 +39,7 @@ public class BulletScript : MonoBehaviour
             //Debug.Log("work?");
 
         }
-        else if (sniper_spread == true)
+        else if (sniper_spread == true || crossbow_spread == true)
 
         {
             GetComponent<Rigidbody>().AddForce(transform.forward * (force * 10));
@@ -130,6 +131,23 @@ public class BulletScript : MonoBehaviour
             {
                 _hp = FindObjectOfType<healthbar>().health;
                 _hp.Damage1(100);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+        }
+        else if (gm.getscore() == 4)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage(200);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+            if (col.gameObject.tag == "Enemy")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage1(200);
                 //gm.incscore(1);
                 Destroy(gameObject);
             }
