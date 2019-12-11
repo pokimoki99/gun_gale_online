@@ -18,12 +18,13 @@ public class Player : Photon.MonoBehaviour
     public GameObject bullet;
     GameObject scoreboard;
     int playerCount;
-
+    
     //public healthbar playerhealth;
     public healthbar _health;
 
     //public bool syncLocalRotation = true;
     public int score = 0;
+    public int score1 = 0;
     public BulletScript spread;
     public GameObject pistol;
     public GameObject shotgun;
@@ -128,6 +129,7 @@ public class Player : Photon.MonoBehaviour
             score = 4;
         }
         score = GameManager.Instance.score;
+        score1 = GameManager.Instance.score1;
         if (score == 0)
         {
             //GameManager.Instance.Ammo()
@@ -184,6 +186,76 @@ public class Player : Photon.MonoBehaviour
             sniper.SetActive(true);
         }
         if (score == 4)
+        {
+            spread.crossbow_spread = true;
+            spread.sniper_spread = false;
+            spread.Assault_rifle_spread = false;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            rifle.SetActive(false);
+            sniper.SetActive(false);
+            crossbow.SetActive(true);
+        }
+
+
+        if (score1 == 0)
+        {
+            //GameManager.Instance.Ammo()
+            spread.pistol_spread = true;
+            spread.shotgun_spread = false;
+            spread.Assault_rifle_spread = false;
+            spread.sniper_spread = false;
+            spread.crossbow_spread = false;
+            pistol.SetActive(true);
+            shotgun.SetActive(false);
+            sniper.SetActive(false);
+            rifle.SetActive(false);
+            crossbow.SetActive(false);
+
+        }
+        if (score1 == 1)
+        {
+            spread.pistol_spread = false;
+            spread.shotgun_spread = true;
+            spread.Assault_rifle_spread = false;
+            spread.sniper_spread = false;
+            spread.crossbow_spread = false;
+            pistol.SetActive(false);
+            shotgun.SetActive(true);
+            sniper.SetActive(false);
+            rifle.SetActive(false);
+            crossbow.SetActive(false);
+
+        }
+        if (score1 == 2)
+        {
+            spread.Assault_rifle_spread = true;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            spread.sniper_spread = false;
+            spread.crossbow_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            sniper.SetActive(false);
+            crossbow.SetActive(false);
+            rifle.SetActive(true);
+        }
+        if (score1 == 3)
+        {
+            spread.sniper_spread = true;
+            spread.Assault_rifle_spread = false;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            spread.crossbow_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            rifle.SetActive(false);
+            crossbow.SetActive(false);
+            sniper.SetActive(true);
+        }
+        if (score1 == 4)
         {
             spread.crossbow_spread = true;
             spread.sniper_spread = false;

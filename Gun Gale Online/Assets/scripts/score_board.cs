@@ -28,7 +28,10 @@ public class score_board : MonoBehaviour
         var playerNames = new StringBuilder();
         foreach (var player in PhotonNetwork.playerList)
         {
-            scoreboardtext.text = nick.name + " " + gm.score + "\n" +playerNames.ToString();
+            scoreboardtext.text = nick.name + " " + gm.score + "\n" +playerNames.ToString()
+                +"/n "+gm.score1;
+
+
             playerNames.Append(player.NickName + " " + gm.score1 + "\n");
             //string output = nick.name + playerCount.ToString() + "\n"
             //+ playerNames.ToString();

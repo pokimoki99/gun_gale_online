@@ -28,7 +28,7 @@ public class Respawn_manager : MonoBehaviour
         {
             if (check <= 10)
             {
-                gm.score++;
+                GameManager.Instance.score= GameManager.Instance.score + 1;
                 GameObject mySpawnSpot2 = _team.spawnSpots2[Random.Range(0, _team.spawnSpots2.Length)];
                 _team.player.gameObject.transform.position = new Vector3(mySpawnSpot2.transform.position.x, mySpawnSpot2.transform.position.y + 0.4f, mySpawnSpot2.transform.position.z);
             }
@@ -37,7 +37,7 @@ public class Respawn_manager : MonoBehaviour
         {
             if (check1 <= 10)
             {
-                gm.score1++;
+                GameManager.Instance.score1 = GameManager.Instance.score1 + 1;
                 GameObject MyspawnSpots1 = _team.spawnSpots1[Random.Range(0, _team.spawnSpots1.Length)];
                 _team.player.gameObject.GetComponent<Rigidbody>().position = new Vector3(MyspawnSpots1.transform.position.x, MyspawnSpots1.transform.position.y + 0.4f, MyspawnSpots1.transform.position.z);
 
