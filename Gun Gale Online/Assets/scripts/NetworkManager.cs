@@ -121,6 +121,14 @@ public class NetworkManager : MonoBehaviour
             GameObject MyspawnSpots1 = spawnSpots1[Random.Range(0, spawnSpots1.Length)];
             pos = new Vector3(MyspawnSpots1.transform.position.x, MyspawnSpots1.transform.position.y + 0.4f, MyspawnSpots1.transform.position.z);
             player= PhotonNetwork.Instantiate("mc", pos, Quaternion.identity, 0);
+            this.tag = "Enemy";
+            player.gameObject.tag = "Enemy";
+
+            GameObject[] reactors = GameObject.FindGameObjectsWithTag("play");
+            for (int i = 0; i < reactors.Length; ++i)
+                reactors[i].GetComponent<Image>().enabled = false;
+                GameObject.FindWithTag("playerhp").GetComponent<Image>().enabled = false;
+
         }
 
 
@@ -129,6 +137,13 @@ public class NetworkManager : MonoBehaviour
             GameObject mySpawnSpot2 = spawnSpots2[Random.Range(0, spawnSpots2.Length)];
             pos = new Vector3(mySpawnSpot2.transform.position.x, mySpawnSpot2.transform.position.y + 0.4f, mySpawnSpot2.transform.position.z);
             player=PhotonNetwork.Instantiate("mc", pos, Quaternion.identity, 0);
+            this.tag = "Player";
+            player.gameObject.tag = "Player";
+
+            GameObject[] reactors = GameObject.FindGameObjectsWithTag("ene");
+            for (int i = 0; i < reactors.Length; ++i)
+                reactors[i].GetComponent<Image>().enabled = false;
+            GameObject.FindWithTag("enemyhp").GetComponent<Image>().enabled=false;
 
         }
         playerNumber++;

@@ -16,10 +16,8 @@ public class Player : Photon.MonoBehaviour
     public GameObject camera;
     public GameObject bullet;
 
-    public healthbar health;
-
     //public healthbar playerhealth;
-    //public healthbar _health;
+    public healthbar _health;
 
     //public bool syncLocalRotation = true;
     public int score = 0;
@@ -47,19 +45,18 @@ public class Player : Photon.MonoBehaviour
 
     public float minimumY = -60F;
     public float maximumY = 60F;
+    float check;
 
     float rotationY = 0F;
 
-    public GameObject deadplayer;
-
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
     {
+        check = FindObjectOfType<healthbar>().health.healthAmount;
         if (stream.isWriting)
         {
             stream.SendNext(GetComponent<Rigidbody>().position);
-            //stream.SendNext(GetComponent<Rigidbody>().rotation);
             stream.SendNext(GetComponent<Rigidbody>().velocity);
+            stream.SendNext(check);
         }
         else
         {
@@ -71,8 +68,7 @@ public class Player : Photon.MonoBehaviour
             lastSynchronizationTime = Time.time;
             syncEndPosition = syncPosition + syncVelocity * syncDelay;
             syncStartPosition = GetComponent<Rigidbody>().position;
-            //syncEndRotation = syncRotation + syncVelocity * syncDelay;
-            //syncStartRotation = GetComponent<Rigidbody>().rotation;
+            this.check = (float)stream.ReceiveNext();
         }
     }
 
@@ -176,9 +172,17 @@ public class Player : Photon.MonoBehaviour
             SynchedMovement();
             spread.SynchedBullet();
             camera.SetActive(false);
-            //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
-            health.GetComponent<healthbar>().enabled = false;
+            //if  (gameObject.tag == "Enemy")
+            //{
+            //    gameObject.tag = "Player";
+            //}
+            //if  (gameObject.tag == "Player")
+            //{
+            //    gameObject.tag = "Enemy";
+            //}
+
+            //gameObject.GetComponent<healthbar>().enabled = false;
 
 
         }

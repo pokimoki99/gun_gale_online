@@ -9,6 +9,11 @@ TagManager:
   - Terrain
   - bullet
   - Health
+  - Enemy
+  - playerhp
+  - enemyhp
+  - ene
+  - play
   layers:
   - Default
   - TransparentFX

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         UpdateScore();
+        Screen.SetResolution(800, 600, false);
     }
 
     // Update score text field

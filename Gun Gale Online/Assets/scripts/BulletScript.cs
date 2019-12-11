@@ -68,14 +68,15 @@ public class BulletScript : MonoBehaviour
         }
         if (col.gameObject.tag == "Player")
         {
-            //GetComponent<healthbar.Health>().Damage(DamageAmount: 10);
-            //healthbar.Health.Damage(5);
             _hp = FindObjectOfType<healthbar>().health;
             _hp.Damage(5);
-            
-            Damage_Taken = true;
-
-            //healthbar.
+            //gm.incscore(1);
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "Enemy")
+        {
+            _hp = FindObjectOfType<healthbar>().health;
+            _hp.Damage1(5);
             //gm.incscore(1);
             Destroy(gameObject);
         }

@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: -8271976276291085922}
   m_Layer: 0
   m_Name: mc
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,13 +419,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 1
+  synchronization: 3
   onSerializeTransformOption: 0
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: -5530904931755168922}
-  - {fileID: 5517176292634325277}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -446,7 +445,7 @@ MonoBehaviour:
   speed: 1
   camera: {fileID: 4729880106167849593}
   bullet: {fileID: 6960390530339463952, guid: 757c3c2698cb4fe478baf4b3bfc302e6, type: 3}
-  health: {fileID: 0}
+  _health: {fileID: 0}
   score: 0
   spread: {fileID: 616501448812119199, guid: 757c3c2698cb4fe478baf4b3bfc302e6, type: 3}
   pistol: {fileID: 4673562487129105226}
@@ -462,7 +461,6 @@ MonoBehaviour:
   maximumX: 360
   minimumY: -60
   maximumY: 60
-  deadplayer: {fileID: 0}
 --- !u!136 &2020657063132619496
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -567,7 +565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e15b473fcc74e4e8f1ee333921b0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
 --- !u!1 &5104315514387878209
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mc (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266694649691988779, guid: 5f990c2ae6c900b4390c5cb170834f3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 564407608258491320, guid: 5f990c2ae6c900b4390c5cb170834f3f,
         type: 3}
