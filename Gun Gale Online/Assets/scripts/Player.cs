@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncEndRotation = Vector3.zero;
     public GameObject camera;
     public GameObject bullet;
+    GameObject scoreboard;
+    int playerCount;
 
     //public healthbar playerhealth;
     public healthbar _health;
@@ -87,6 +90,10 @@ public class Player : Photon.MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
 
+    }
+    public void Start()
+    {
+        scoreboard = GameObject.Find("Canvas").transform.Find("Scoreboard").gameObject;
     }
     public void Update()
     {
@@ -186,6 +193,23 @@ public class Player : Photon.MonoBehaviour
 
 
         }
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    scoreboard.SetActive(true);
+        //    UpdateScoreboard();
+        //}
+        //if (Input.GetKeyUp(KeyCode.Tab))
+        //{
+        //    scoreboard.SetActive(false);
+        //}
+        
+           // PhotonNetwork.player.NickName = "Player # " + Random.Range(1.00f, 9.00f);
+        
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    scoreboard.SetActive(true);
+        //    UpdateScoreboard();
+        //}
     }
 
     public void InputMovement()
@@ -259,8 +283,25 @@ public class Player : Photon.MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             gameObject.GetComponent<Rigidbody>().freezeRotation = true;
         }
-    }
 
+        
+    }
+    //void UpdateScoreboard()
+    //{
+    //    playerCount = PhotonNetwork.playerList.Length;
+
+    //    var playerNames = new StringBuilder();
+
+    //    foreach (var player in PhotonNetwork.playerList)
+    //    {
+    //        print("Nickname: " + player.NickName);
+    //        playerNames.Append(player.NickName + "\n");
+    //    }
+
+    //    string output = "Player " + playerCount.ToString() +"\n"
+    //        + playerNames.ToString();
+    //    scoreboard.transform.Find("Text").GetComponent<Text>().text = playerCount.ToString();
+    //}
     public void SynchedMovement()
     {
         syncTime += Time.deltaTime;
