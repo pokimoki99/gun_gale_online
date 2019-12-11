@@ -120,7 +120,7 @@ public class NetworkManager : MonoBehaviour
         }
     void spawnplayer()
     {
-        if (team == false)
+        if (team == false)//team 2
         {
             GameObject MyspawnSpots1 = spawnSpots1[Random.Range(0, spawnSpots1.Length)];
             pos = new Vector3(MyspawnSpots1.transform.position.x, MyspawnSpots1.transform.position.y + 0.4f, MyspawnSpots1.transform.position.z);
@@ -138,7 +138,7 @@ public class NetworkManager : MonoBehaviour
         }
 
 
-        if (team == true)
+        if (team == true)//team 1
         {
             GameObject mySpawnSpot2 = spawnSpots2[Random.Range(0, spawnSpots2.Length)];
             pos = new Vector3(mySpawnSpot2.transform.position.x, mySpawnSpot2.transform.position.y + 0.4f, mySpawnSpot2.transform.position.z);

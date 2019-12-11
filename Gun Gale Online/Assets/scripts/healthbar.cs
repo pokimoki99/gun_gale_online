@@ -30,8 +30,8 @@ public class healthbar : MonoBehaviour
 
     public class Health
     {
-        public const int HEALTH_MAX = 200;
-        public const int HEALTH_MAX1 = 200;
+        public const int HEALTH_MAX = 100;
+        public const int HEALTH_MAX1 = 100;
 
         public float healthAmount;
         public float healthAmount1;
@@ -48,8 +48,8 @@ public class healthbar : MonoBehaviour
 
 
 
-            healthRegenAmount = 20f;
-            healthRegenAmount1 = 20f;
+            healthRegenAmount = 1f;
+            healthRegenAmount1 = 1f;
         }
         public void Update()
         {
