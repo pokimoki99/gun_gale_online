@@ -71,7 +71,7 @@ public class Player : Photon.MonoBehaviour
             this.check = (float)stream.ReceiveNext();
         }
     }
-
+    
     public void Awake()
     {
         gameObject.GetComponent<Rigidbody>();

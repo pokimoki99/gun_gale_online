@@ -66,20 +66,75 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if (col.gameObject.tag == "Player")
+        if (gm.getscore() == 0)
         {
-            _hp = FindObjectOfType<healthbar>().health;
-            _hp.Damage(5);
-            //gm.incscore(1);
-            Destroy(gameObject);
+            if (col.gameObject.tag == "Player")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage(20);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+            if (col.gameObject.tag == "Enemy")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage1(20);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
         }
-        if (col.gameObject.tag == "Enemy")
+        else if (gm.getscore() == 1)
         {
-            _hp = FindObjectOfType<healthbar>().health;
-            _hp.Damage1(5);
-            //gm.incscore(1);
-            Destroy(gameObject);
+            if (col.gameObject.tag == "Player")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage(25);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+            if (col.gameObject.tag == "Enemy")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage1(25);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
         }
+        else if (gm.getscore() == 2)
+            {
+                if (col.gameObject.tag == "Player")
+                {
+                    _hp = FindObjectOfType<healthbar>().health;
+                    _hp.Damage(5);
+                    //gm.incscore(1);
+                    Destroy(gameObject);
+                }
+                if (col.gameObject.tag == "Enemy")
+                {
+                    _hp = FindObjectOfType<healthbar>().health;
+                    _hp.Damage1(5);
+                    //gm.incscore(1);
+                    Destroy(gameObject);
+                }
+            }
+        else if (gm.getscore() == 3)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage(100);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+            if (col.gameObject.tag == "Enemy")
+            {
+                _hp = FindObjectOfType<healthbar>().health;
+                _hp.Damage1(100);
+                //gm.incscore(1);
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     void main()

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Text ammotext;
     public int ammocount = 500;
    
-    int score;
+    public int score;
     public string gettingScore;
     public bool pistol, shotgun,sniper, rifle = false;
 
@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
     {
         score = s;
         UpdateScore();
+    }
+    public int getscore()
+    {
+        return score;
     }
 
     // increase the score
