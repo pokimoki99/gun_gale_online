@@ -16,6 +16,9 @@ TagManager:
   - play
   - scope
   - reticle
+  - Fire
+  - score
+  - score1
   layers:
   - Default
   - TransparentFX

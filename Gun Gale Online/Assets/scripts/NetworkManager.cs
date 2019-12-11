@@ -132,6 +132,8 @@ public class NetworkManager : MonoBehaviour
             for (int i = 0; i < reactors.Length; ++i)
                 reactors[i].GetComponent<Image>().enabled = false;
                 GameObject.FindWithTag("playerhp").GetComponent<Image>().enabled = false;
+            GameObject.FindWithTag("score1").SetActive(false);
+
 
         }
 
@@ -148,6 +150,7 @@ public class NetworkManager : MonoBehaviour
             for (int i = 0; i < reactors.Length; ++i)
                 reactors[i].GetComponent<Image>().enabled = false;
             GameObject.FindWithTag("enemyhp").GetComponent<Image>().enabled=false;
+            GameObject.FindWithTag("score").SetActive(false);
 
         }
         playerNumber++;

@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text scoretext;
+    public Text scoretext1;
     public Text ammotext;
     public int ammocount = 500;
    
     public int score;
+    public int score1;
     public string gettingScore;
     public bool pistol, shotgun,sniper,crossbow, rifle = false;
 
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
+        score1 = 0;
         UpdateScore();
         Screen.SetResolution(800, 600, false);
     }
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore()
     {
         scoretext.text = "Score: " + score ;
+        scoretext1.text = "Score1: " + score1 ;
         ammotext.text = "Ammo: " + ammocount;
     }
 
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void setscore(int s)
     {
         score = s;
+        score1 = s;
         UpdateScore();
     }
     public int getscore()
@@ -53,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void incscore(int s)
     {
         score = score + s;
+        score1 = score1 + s;
 
         
         UpdateScore();
@@ -159,6 +165,47 @@ public class GameManager : MonoBehaviour
             }
         }
         if (score == 4)
+        {
+            if (crossbow == false)
+            {
+                ammocount = 2;
+                crossbow = true;
+            }
+        }
+
+        if (score == 0)
+        {
+            if (pistol == false)
+            {
+                ammocount = 15;
+                pistol = true;
+            }
+        }
+        if (score1 == 1)
+        {
+            if (shotgun == false)
+            {
+                ammocount = 28;
+                shotgun = true;
+            }
+        }
+        if (score1 == 2)
+        {
+            if (rifle == false)
+            {
+                ammocount = 40;
+                rifle = true;
+            }
+        }
+        if (score1 == 3)
+        {
+            if (sniper == false)
+            {
+                ammocount = 2;
+                sniper = true;
+            }
+        }
+        if (score1 == 4)
         {
             if (crossbow == false)
             {

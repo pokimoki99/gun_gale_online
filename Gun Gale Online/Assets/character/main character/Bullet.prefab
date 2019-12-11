@@ -155,11 +155,11 @@ MonoBehaviour:
   explosionprefab: {fileID: 1000011079123858, guid: f16d2853ce7e784459003cf4140eca61,
     type: 3}
   force: 500
-  pistol_spread: 0
+  pistol_spread: 1
   shotgun_spread: 0
   Assault_rifle_spread: 0
   sniper_spread: 0
-  crossbow_spread: 1
+  crossbow_spread: 0
   Damage_Taken: 0
 --- !u!1001 &6960390530339562928
 PrefabInstance:

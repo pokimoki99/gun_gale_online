@@ -127,6 +127,7 @@ public class Player : Photon.MonoBehaviour
             GameManager.Instance.setscore(4);
             score = 4;
         }
+        score = GameManager.Instance.score;
         if (score == 0)
         {
             //GameManager.Instance.Ammo()
