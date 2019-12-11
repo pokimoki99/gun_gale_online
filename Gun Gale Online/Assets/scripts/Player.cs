@@ -29,6 +29,7 @@ public class Player : Photon.MonoBehaviour
     public GameObject shotgun;
     public GameObject rifle;
     public GameObject sniper;
+    public GameObject crossbow;
 
     CharacterController characterController;
     public float jumpSpeed = 8.0f;
@@ -83,10 +84,12 @@ public class Player : Photon.MonoBehaviour
         shotgun.SetActive(false);
         rifle.SetActive(false);
         sniper.SetActive(false);
+        crossbow.SetActive(false);
         spread.pistol_spread = false;
         spread.shotgun_spread = false;
         spread.Assault_rifle_spread = false;
         spread.sniper_spread = false;
+        spread.crossbow_spread = false;
 
         characterController = GetComponent<CharacterController>();
 
@@ -119,6 +122,11 @@ public class Player : Photon.MonoBehaviour
             GameManager.Instance.setscore(3);
             score = 3;
         }
+        if (Input.GetKey(KeyCode.C))
+        {
+            GameManager.Instance.setscore(4);
+            score = 4;
+        }
         if (score == 0)
         {
             //GameManager.Instance.Ammo()
@@ -126,10 +134,12 @@ public class Player : Photon.MonoBehaviour
             spread.shotgun_spread = false;
             spread.Assault_rifle_spread = false;
             spread.sniper_spread = false;
+            spread.crossbow_spread = false;
             pistol.SetActive(true);
             shotgun.SetActive(false);
             sniper.SetActive(false);
             rifle.SetActive(false);
+            crossbow.SetActive(false);
 
         }
         if (score == 1)
@@ -138,10 +148,12 @@ public class Player : Photon.MonoBehaviour
             spread.shotgun_spread = true;
             spread.Assault_rifle_spread = false;
             spread.sniper_spread = false;
+            spread.crossbow_spread = false;
             pistol.SetActive(false);
             shotgun.SetActive(true);
             sniper.SetActive(false);
             rifle.SetActive(false);
+            crossbow.SetActive(false);
 
         }
         if (score == 2)
@@ -150,9 +162,11 @@ public class Player : Photon.MonoBehaviour
             spread.shotgun_spread = false;
             spread.pistol_spread = false;
             spread.sniper_spread = false;
+            spread.crossbow_spread = false;
             shotgun.SetActive(false);
             pistol.SetActive(false);
             sniper.SetActive(false);
+            crossbow.SetActive(false);
             rifle.SetActive(true);
         }
         if (score == 3)
@@ -161,10 +175,25 @@ public class Player : Photon.MonoBehaviour
             spread.Assault_rifle_spread = false;
             spread.shotgun_spread = false;
             spread.pistol_spread = false;
+            spread.crossbow_spread = false;
             shotgun.SetActive(false);
             pistol.SetActive(false);
             rifle.SetActive(false);
+            crossbow.SetActive(false);
             sniper.SetActive(true);
+        }
+        if (score == 4)
+        {
+            spread.crossbow_spread = true;
+            spread.sniper_spread = false;
+            spread.Assault_rifle_spread = false;
+            spread.shotgun_spread = false;
+            spread.pistol_spread = false;
+            shotgun.SetActive(false);
+            pistol.SetActive(false);
+            rifle.SetActive(false);
+            sniper.SetActive(false);
+            crossbow.SetActive(true);
         }
 
         if (this.photonView.isMine)
