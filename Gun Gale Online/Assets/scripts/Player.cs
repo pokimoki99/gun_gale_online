@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : Photon.MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 50f;
     private float lastSynchronizationTime = 0f;
     private float syncDelay = 0f;
     private float syncTime = 0f;
@@ -15,6 +15,8 @@ public class Player : Photon.MonoBehaviour
     private Vector3 syncEndRotation = Vector3.zero;
     public GameObject camera;
     public GameObject bullet;
+
+    public healthbar health;
 
     //public healthbar playerhealth;
     //public healthbar _health;
@@ -47,6 +49,8 @@ public class Player : Photon.MonoBehaviour
     public float maximumY = 60F;
 
     float rotationY = 0F;
+
+    public GameObject deadplayer;
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo Info)
@@ -174,7 +178,7 @@ public class Player : Photon.MonoBehaviour
             camera.SetActive(false);
             //bullet.SetActive(false);
             gameObject.GetComponent<BulletFireScript>().enabled = false;
-            //_health.GetComponent<healthbar>().enabled = false;
+            health.GetComponent<healthbar>().enabled = false;
 
 
         }
@@ -218,8 +222,8 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKey("s"))
         {
-            //transform.position += -camera.transform.forward * (Time.deltaTime * speed);
-            gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.forward * (Time.deltaTime * speed);
+            transform.position += -camera.transform.forward * (Time.deltaTime * speed);
+            //gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.forward * (Time.deltaTime * speed);
         }
 
         if (Input.GetKeyUp("s"))
@@ -230,8 +234,8 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKey("a"))
         {
-            //transform.position += -camera.transform.right * (Time.deltaTime * speed);
-            gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.right * (Time.deltaTime * speed);
+            transform.position += -camera.transform.right * (Time.deltaTime * speed);
+            //gameObject.GetComponent<Rigidbody>().velocity += -camera.transform.right * (Time.deltaTime * speed);
         }
 
         if (Input.GetKeyUp("a"))
@@ -242,8 +246,8 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            //transform.position += camera.transform.right * (Time.deltaTime * speed);
-            gameObject.GetComponent<Rigidbody>().velocity += camera.transform.right * (Time.deltaTime * speed);
+            transform.position += camera.transform.right * (Time.deltaTime * speed);
+            //gameObject.GetComponent<Rigidbody>().velocity += camera.transform.right * (Time.deltaTime * speed);
         }
 
         if (Input.GetKeyUp("d"))

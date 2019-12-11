@@ -16,6 +16,7 @@ public class BulletScript : MonoBehaviour
     public bool sniper_spread = false;
 
     public healthbar.Health _hp;
+    
     public bool Damage_Taken;
 
     

@@ -8,6 +8,7 @@ TagManager:
   - spawnpoints2
   - Terrain
   - bullet
+  - Health
   layers:
   - Default
   - TransparentFX

@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class healthbar : MonoBehaviour
 {
-    private Image barImage;
+    Image barImage;
     public Health health;
     //public bool Damage_Taken = false;
-    private void Awake()
+
+
+    public void Awake()
     {
-        barImage = transform.Find("Bar").GetComponent<Image>();
+        barImage = GameObject.FindWithTag("Health").GetComponent<Image>();
 
         health = new Health();
 
@@ -20,6 +22,8 @@ public class healthbar : MonoBehaviour
     {
         health.Update();
 
+
+
         barImage.fillAmount = health.GetHealthNormalized();
     }
 
@@ -27,24 +31,33 @@ public class healthbar : MonoBehaviour
     {
         public const int HEALTH_MAX = 100;
 
-        private float healthAmount;
-        private float healthRegenAmount;
+        public float healthAmount;
+        public bool dead = false;
+
+        public float healthRegenAmount;
         public Health()
         {
             healthAmount = 90;
-            healthRegenAmount = 10f;
+            healthRegenAmount = 5f;
         }
         public void Update()
         {
-            if(healthAmount < HEALTH_MAX)
+            if (healthAmount < HEALTH_MAX)
             {
-            healthAmount += healthRegenAmount * Time.deltaTime;
+                healthAmount += healthRegenAmount * Time.deltaTime;
             }
-            
+            if (healthAmount <= 10)
+            {
+                healthRegenAmount = 0;
+                dead = true;
+            }
+            if (dead)
+            {
+                healthAmount = 100;
+                dead = false;
+            }
         }
-        
-       
-        
+
         public void Damage(int DamageAmount)
         {
             //if (BulletScript.Damage_Taken = true)
@@ -54,11 +67,11 @@ public class healthbar : MonoBehaviour
             if (healthAmount >= DamageAmount)
             {
                 healthAmount -= DamageAmount;
-                Debug.Log("Damage Taken " + DamageAmount);
+                //Debug.Log("Damage Taken " + DamageAmount);
             }
             else
             {
-                Debug.Log("Too much Damage");
+                //Debug.Log("Too much Damage");
             }
         }
         public float GetHealthNormalized()
